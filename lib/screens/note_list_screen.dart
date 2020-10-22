@@ -159,6 +159,7 @@ class NoteListScreen extends StatelessWidget {
 
   //Method used to move on the note editing screen
   void goToNoteEditScreen(BuildContext context) {
+    //Push to screen stack
     Navigator.of(context).pushNamed(NoteEditScreen.route);
   }
 }
