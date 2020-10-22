@@ -20,6 +20,7 @@ class NoteProvider with ChangeNotifier {
   Future getNotes() async {
     final notesList = await DatabaseHelper.getNotesFromDB();
 
+    //Convert to list!
     _items = notesList
         .map(
           (n) => Note(n['id'], n['title'], n['content'], n['imagePath']),
