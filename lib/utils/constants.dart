@@ -14,14 +14,14 @@ const black2 = Color(0xFF424242);
 const headerColor = Color(0xFFFD5872);
 const white = Colors.white;
 
-var headerRideStyle = GoogleFonts.roboto(
+var headerRideStyle = GoogleFonts.economica(
   textStyle: TextStyle(
     color: white,
-    fontSize: 15.0,
+    fontSize: 30.0,
   ),
 );
 
-var headerNoteStyle = GoogleFonts.roboto(
+var headerNoteStyle = GoogleFonts.economica(
   textStyle: TextStyle(
     color: white,
     fontSize: 45.0,
@@ -34,7 +34,7 @@ enum EditMode {
   UPDATE,
 }
 
-var noNotesStyle = GoogleFonts.roboto(
+var noNotesStyle = GoogleFonts.economica(
   textStyle: TextStyle(
     fontSize: 22.0,
     color: black2,
@@ -42,7 +42,7 @@ var noNotesStyle = GoogleFonts.roboto(
   ),
 );
 
-var boldPlus = GoogleFonts.roboto(
+var boldPlus = GoogleFonts.economica(
   textStyle: TextStyle(
     fontSize: 30.0,
     color: Colors.blueAccent,
@@ -50,7 +50,7 @@ var boldPlus = GoogleFonts.roboto(
   ),
 );
 
-var itemTitle = GoogleFonts.roboto(
+var itemTitle = GoogleFonts.economica(
   textStyle: TextStyle(
     fontSize: 18.0,
     color: black,
@@ -58,38 +58,38 @@ var itemTitle = GoogleFonts.roboto(
   ),
 );
 
-var itemDateStyle = GoogleFonts.roboto(
+var itemDateStyle = GoogleFonts.economica(
   textStyle: TextStyle(
     fontSize: 11.0,
     color: grey2,
   ),
 );
 
-var itemContentStyle = GoogleFonts.roboto(
+var itemContentStyle = GoogleFonts.economica(
   textStyle: TextStyle(
     fontSize: 15.0,
     color: grey2,
   ),
 );
 
-var viewTitleStyle = GoogleFonts.roboto(
+var viewTitleStyle = GoogleFonts.economica(
   fontWeight: FontWeight.w900,
   fontSize: 28.0,
 );
 
-var viewContentStyle = GoogleFonts.roboto(
+var viewContentStyle = GoogleFonts.economica(
     letterSpacing: 1.0,
     fontSize: 20.0,
     height: 1.5,
     fontWeight: FontWeight.w400);
-var createTitle = GoogleFonts.roboto(
+var createTitle = GoogleFonts.economica(
   textStyle: TextStyle(
     fontSize: 28.0,
     fontWeight: FontWeight.w900,
   ),
 );
 
-var createContent = GoogleFonts.roboto(
+var createContent = GoogleFonts.economica(
   textStyle: TextStyle(
     letterSpacing: 1.0,
     fontSize: 20.0,
