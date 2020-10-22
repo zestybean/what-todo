@@ -14,8 +14,10 @@ class NoteListScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     //FutureBuilder depends on state which will determine UI
     return FutureBuilder(
+      //Future builder needs this
       future: Provider.of<NoteProvider>(context, listen: false).getNotes(),
       builder: (context, snapshot) {
+        //If loading show loading screen else proceed
         if (snapshot.connectionState == ConnectionState.waiting) {
           return Scaffold(
             body: Center(
@@ -24,8 +26,10 @@ class NoteListScreen extends StatelessWidget {
           );
         } else {
           return Scaffold(
-            body: Container(
-              child: Text('We here!'),
+            body: Center(
+              child: Container(
+                child: Text('We here!'),
+              ),
             ),
           );
         }
