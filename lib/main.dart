@@ -11,6 +11,9 @@ import 'helper/helpers.dart';
 //Packages
 import 'package:provider/provider.dart';
 
+//Constants
+import 'package:what_todo_app/utils/constants.dart';
+
 void main() {
   runApp(MyApp());
 }
@@ -23,6 +26,7 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider.value(
       value: NoteProvider(),
       child: MaterialApp(
+        theme: ThemeData(accentColor: headerColor),
         title: 'What_ToDo',
         debugShowCheckedModeBanner: false,
         initialRoute: '/',
