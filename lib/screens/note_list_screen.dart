@@ -18,6 +18,8 @@ import '../screens/screens.dart';
 import 'package:what_todo_app/utils/constants.dart';
 
 class NoteListScreen extends StatelessWidget {
+  static const route = '/note-list';
+
   @override
   Widget build(BuildContext context) {
     //FutureBuilder depends on state which will determine UI
@@ -36,31 +38,19 @@ class NoteListScreen extends StatelessWidget {
           //Check is state is complete else error out
           if (snapshot.connectionState == ConnectionState.done) {
             return Scaffold(
-              appBar: AppBar(
-                backgroundColor: headerColor,
-                elevation: 0.0,
-                title: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      'Quick',
-                      style: headerRideStyle,
-                    ),
-                    Text(
-                      'Notes',
-                      style: headerNoteStyle,
-                    ),
-                  ],
-                ),
-              ),
-              //Part of provider listener?
-              body: Consumer<NoteProvider>(
-                child: noNotesUI(context),
-                //Builder checks to see if there are any notes from the provider
-                //if there are none it will display the child above with the context
-                //of no noNotesUI else it will display a different UI.
-                builder: (context, noteprovider, child) =>
-                    noteprovider.items.length <= 0 ? child : Container(),
+              body: Column(
+                children: [
+                  header(),
+                  //Part of provider listener?
+                  Consumer<NoteProvider>(
+                    child: noNotesUI(context),
+                    //Builder checks to see if there are any notes from the provider
+                    //if there are none it will display the child above with the context
+                    //of no noNotesUI else it will display a different UI.
+                    builder: (context, noteprovider, child) =>
+                        noteprovider.items.length <= 0 ? child : Container(),
+                  ),
+                ],
               ),
               floatingActionButton: FloatingActionButton(
                 elevation: 0.0,
@@ -94,9 +84,21 @@ class NoteListScreen extends StatelessWidget {
             bottomRight: Radius.circular(75.0),
           ),
         ),
-        height: 25,
+        height: 125,
         width: double.infinity,
-        child: null,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Quick',
+              style: headerRideStyle,
+            ),
+            Text(
+              'Notes',
+              style: headerNoteStyle,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -114,48 +116,42 @@ class NoteListScreen extends StatelessWidget {
   //Widget displayed when no notes are available
   Widget noNotesUI(BuildContext context) {
     //Column is for the header not to move with rest of ui
-    return Column(
-      children: [
-        header(),
-        //Rest of view can take rest of space and be scrollable to the user
-        Expanded(
-          child: ListView(
+    return Expanded(
+      child: ListView(
+        children: [
+          Column(
             children: [
-              Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 50.0, bottom: 25.0),
-                    child: Image.asset(
-                      'assets/images/sad_note.png',
-                      fit: BoxFit.cover,
-                      width: 300,
-                      height: 300,
-                    ),
-                  ),
-                  RichText(
-                    text: TextSpan(
-                      style: noNotesStyle,
-                      children: [
-                        TextSpan(text: 'There is no note available\nTap on"'),
-                        //Make this tappable to the user to add a note
-                        TextSpan(
-                          text: '+',
-                          style: boldPlus,
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = () {
-                              goToNoteEditScreen(context);
-                            },
-                        ),
-                        TextSpan(text: '"to add new note'),
-                      ],
-                    ),
-                  )
-                ],
+              Padding(
+                padding: const EdgeInsets.only(top: 50.0, bottom: 25.0),
+                child: Image.asset(
+                  'assets/images/sad_note.png',
+                  fit: BoxFit.cover,
+                  width: 300,
+                  height: 300,
+                ),
               ),
+              RichText(
+                text: TextSpan(
+                  style: noNotesStyle,
+                  children: [
+                    TextSpan(text: 'There is no note available\nTap on"'),
+                    //Make this tappable to the user to add a note
+                    TextSpan(
+                      text: '+',
+                      style: boldPlus,
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          goToNoteEditScreen(context);
+                        },
+                    ),
+                    TextSpan(text: '"to add new note'),
+                  ],
+                ),
+              )
             ],
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

@@ -32,7 +32,8 @@ class MyApp extends StatelessWidget {
         initialRoute: '/',
         //Application screen routes
         routes: {
-          '/': (context) => NoteListScreen(),
+          '/': (context) => SplashScreen(),
+          NoteListScreen.route: (context) => NoteListScreen(),
           NoteViewScreen.route: (context) => NoteViewScreen(),
           NoteEditScreen.route: (context) => NoteEditScreen(),
         },
