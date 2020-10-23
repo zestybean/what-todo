@@ -63,6 +63,8 @@ class NoteListScreen extends StatelessWidget {
                     noteprovider.items.length <= 0 ? child : Container(),
               ),
               floatingActionButton: FloatingActionButton(
+                elevation: 0.0,
+                heroTag: 'btn1',
                 onPressed: () {
                   goToNoteEditScreen(context);
                 },
