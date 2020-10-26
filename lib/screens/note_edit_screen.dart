@@ -44,7 +44,7 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
     return Scaffold(
       backgroundColor: white,
       appBar: AppBar(
-        brightness: Brightness.dark,
+        brightness: Brightness.light,
         elevation: 0.0,
         backgroundColor: white,
         leading: IconButton(
@@ -87,47 +87,52 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
               ),
             ),
             if (_image != null)
-              Container(
-                padding: EdgeInsets.all(10.0),
-                width: MediaQuery.of(context).size.width,
-                height: 250.0,
-                child: Stack(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20.0),
-                        image: DecorationImage(
-                          image: FileImage(_image),
-                          fit: BoxFit.cover,
+              GestureDetector(
+                onTap: () {
+                  getImage(ImageSource.gallery);
+                },
+                child: Container(
+                  padding: EdgeInsets.all(10.0),
+                  width: MediaQuery.of(context).size.width,
+                  height: 250.0,
+                  child: Stack(
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20.0),
+                          image: DecorationImage(
+                            image: FileImage(_image),
+                            fit: BoxFit.contain,
+                          ),
                         ),
                       ),
-                    ),
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child: Padding(
-                        padding: EdgeInsets.all(12.0),
-                        child: Container(
-                          height: 30.0,
-                          width: 30.0,
-                          decoration: BoxDecoration(
-                              shape: BoxShape.circle, color: Colors.white),
-                          child: InkWell(
-                            onTap: () {
-                              setState(
-                                () {
-                                  _image = null;
-                                },
-                              );
-                            },
-                            child: Icon(
-                              Icons.delete,
-                              size: 16.0,
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: Padding(
+                          padding: EdgeInsets.all(12.0),
+                          child: Container(
+                            height: 30.0,
+                            width: 30.0,
+                            decoration: BoxDecoration(
+                                shape: BoxShape.circle, color: Colors.white),
+                            child: InkWell(
+                              onTap: () {
+                                setState(
+                                  () {
+                                    _image = null;
+                                  },
+                                );
+                              },
+                              child: Icon(
+                                Icons.delete,
+                                size: 16.0,
+                              ),
                             ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             Padding(

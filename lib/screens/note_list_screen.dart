@@ -38,6 +38,24 @@ class NoteListScreen extends StatelessWidget {
           //Check is state is complete else error out
           if (snapshot.connectionState == ConnectionState.done) {
             return Scaffold(
+              appBar: AppBar(
+                brightness: Brightness.dark,
+                backgroundColor: headerColor,
+                elevation: 0.0,
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Quick',
+                      style: headerRideStyle,
+                    ),
+                    Text(
+                      'Notes',
+                      style: headerNoteStyle,
+                    ),
+                  ],
+                ),
+              ),
               body: Column(
                 children: [
                   header(),
@@ -84,21 +102,9 @@ class NoteListScreen extends StatelessWidget {
             bottomRight: Radius.circular(75.0),
           ),
         ),
-        height: 125,
+        height: 50,
         width: double.infinity,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              'Quick',
-              style: headerRideStyle,
-            ),
-            Text(
-              'Notes',
-              style: headerNoteStyle,
-            ),
-          ],
-        ),
+        child: null,
       ),
     );
   }

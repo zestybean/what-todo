@@ -26,7 +26,10 @@ class MyApp extends StatelessWidget {
     return ChangeNotifierProvider.value(
       value: NoteProvider(),
       child: MaterialApp(
-        theme: ThemeData(accentColor: headerColor),
+        theme: ThemeData(
+          accentColor: headerColor,
+        ),
+
         title: 'What_ToDo',
         debugShowCheckedModeBanner: false,
         initialRoute: '/',
