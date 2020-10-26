@@ -11,19 +11,22 @@ class SplashScreen extends StatefulWidget {
   _SplashScreenState createState() => _SplashScreenState();
 }
 
-class _SplashScreenState extends State<SplashScreen>
-    with TickerProviderStateMixin {
+class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Timer(Duration(seconds: 2), () {
+      //This needs to be push replacement in order to avoid having a back
+      //button on the app bar
       Navigator.pushReplacement(
         context,
         PageRouteBuilder(
+            settings: RouteSettings(name: '/note-list'),
             transitionDuration: Duration(seconds: 2),
             transitionsBuilder: (BuildContext context,
                 Animation<double> animation,
                 Animation<double> secAnimation,
                 Widget child) {
+              //Animation properties
               animation =
                   CurvedAnimation(parent: animation, curve: Curves.easeInCubic);
               return FadeTransition(
@@ -31,6 +34,7 @@ class _SplashScreenState extends State<SplashScreen>
                 child: child,
               );
             },
+            //This is the route that will display
             pageBuilder: (BuildContext context, Animation<double> animation,
                 Animation<double> secAnimation) {
               return NoteListScreen();
@@ -42,6 +46,7 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   Widget build(BuildContext context) {
+    //The splash screen properties
     return Scaffold(
       body: Container(
         color: headerColor,

@@ -2,13 +2,11 @@
 
 //Flutter
 import 'package:flutter/material.dart';
+import 'package:what_todo_app/widgets/delete_popup.dart';
 import 'dart:io';
 
 //Helpers
 import '../helper/helpers.dart';
-
-//Screens
-import '../screens/screens.dart';
 
 //Packages
 import 'package:image_picker/image_picker.dart';
@@ -18,6 +16,9 @@ import 'package:path_provider/path_provider.dart';
 
 //Constants
 import '../utils/constants.dart';
+
+//Modals
+import '../models/note.dart';
 
 class NoteEditScreen extends StatefulWidget {
   static const route = '/note-edit';
@@ -31,6 +32,34 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
   final contentController = TextEditingController();
   File _image, localFile;
   final picker = ImagePicker();
+
+  bool firstTime = true;
+  Note selectedNote;
+  int id;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+
+    if (firstTime) {
+      id = ModalRoute.of(this.context).settings.arguments;
+
+      print(id);
+
+      if (id != null) {
+        selectedNote =
+            Provider.of<NoteProvider>(this.context, listen: false).getNote(id);
+
+        titleController.text = selectedNote?.title;
+        contentController.text = selectedNote?.content;
+
+        if (selectedNote?.imagePath != null) {
+          _image = File(selectedNote.imagePath);
+        }
+      }
+      firstTime = false;
+    }
+  }
 
   @override
   void dispose() {
@@ -66,7 +95,11 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
           AppBarActionButton(
               icon: Icon(Icons.delete),
               fun: () {
-                Navigator.pop(context);
+                if (id != null) {
+                  _showDialog();
+                } else {
+                  Navigator.pop(context);
+                }
               }),
         ],
       ),
@@ -102,7 +135,7 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
                           borderRadius: BorderRadius.circular(20.0),
                           image: DecorationImage(
                             image: FileImage(_image),
-                            fit: BoxFit.contain,
+                            fit: BoxFit.fill,
                           ),
                         ),
                       ),
@@ -154,10 +187,10 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        heroTag: 'noteEditBtn',
         onPressed: () {
           if (titleController.text.isEmpty)
             titleController.text = 'Untitled Note';
-
           saveNote();
         },
         child: Icon(Icons.save),
@@ -165,9 +198,13 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
     );
   }
 
+  //Method that returns the image from the devices
   void getImage(ImageSource imageSource) async {
+    //Uses the image picker package to return image from device
+    //in form of path
     PickedFile imageFile = await picker.getImage(source: imageSource);
 
+    //If image selection is cancelled return null
     if (imageFile == null) return;
 
     File tmpFile = File(imageFile.path);
@@ -182,22 +219,45 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
     });
   }
 
+  //Method that will add the note to the db
   void saveNote() {
+    //Inits
     String title = titleController.text.trim();
     String content = contentController.text.trim();
     String imagePath = _image != null ? _image.path : null;
 
-    int id = DateTime.now().millisecondsSinceEpoch;
+    //Saved or updated
+    if (id != null) {
+      Provider.of<NoteProvider>(this.context, listen: false)
+          .addOrUpdateNote(id, title, content, imagePath, EditMode.UPDATE);
+      Navigator.of(this.context).pop();
+    } else {
+      //Using time for the id of each note for unique-ness
+      int id = DateTime.now().millisecondsSinceEpoch;
+      //Calls the provider listener to add or update the note dependent
+      //on the id if it exists udpate else add new
+      Provider.of<NoteProvider>(this.context, listen: false)
+          .addOrUpdateNote(id, title, content, imagePath, EditMode.ADD);
+      //Go to view notes
+      Navigator.of(this.context).pop();
+    }
+  }
 
-    Provider.of<NoteProvider>(this.context, listen: false)
-        .addOrUpdateNote(id, title, content, imagePath, EditMode.ADD);
-    Navigator.of(this.context)
-        .pushReplacementNamed(NoteViewScreen.route, arguments: id);
+  void _showDialog() {
+    showDialog(
+      context: this.context,
+      builder: (context) {
+        return DeletePopUp(selectedNote: selectedNote);
+      },
+    );
   }
 }
 
+//Small widget for the app bar buttons
 class AppBarActionButton extends StatelessWidget {
   final Icon icon;
+
+  //Call back for each button that needs to be passed in
   final Function fun;
 
   AppBarActionButton({this.icon, this.fun});

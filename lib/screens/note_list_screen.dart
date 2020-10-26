@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 //Packages
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:what_todo_app/widgets/list_item.dart';
 
 //Helpers
 import '../helper/helpers.dart';
@@ -66,13 +67,34 @@ class NoteListScreen extends StatelessWidget {
                     //if there are none it will display the child above with the context
                     //of no noNotesUI else it will display a different UI.
                     builder: (context, noteprovider, child) =>
-                        noteprovider.items.length <= 0 ? child : Container(),
+                        noteprovider.items.length <= 0
+                            ? child
+                            : Expanded(
+                                child: ListView.builder(
+                                  itemCount: noteprovider.items.length + 1,
+                                  itemBuilder: (context, index) {
+                                    if (index == 0) {
+                                      return Container();
+                                    } else {
+                                      final i = index - 1;
+                                      final item = noteprovider.items[i];
+                                      return ListItem(
+                                        id: item.id,
+                                        title: item.title,
+                                        content: item.content,
+                                        imagePath: item.imagePath,
+                                        date: item.date,
+                                      );
+                                    }
+                                  },
+                                ),
+                              ),
                   ),
                 ],
               ),
               floatingActionButton: FloatingActionButton(
                 elevation: 0.0,
-                heroTag: 'btn1',
+                heroTag: 'noteListBtn',
                 onPressed: () {
                   goToNoteEditScreen(context);
                 },
@@ -102,7 +124,7 @@ class NoteListScreen extends StatelessWidget {
             bottomRight: Radius.circular(75.0),
           ),
         ),
-        height: 50,
+        height: 35,
         width: double.infinity,
         child: null,
       ),

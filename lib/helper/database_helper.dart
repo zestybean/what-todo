@@ -30,12 +30,24 @@ class DatabaseHelper {
     return database.query('notes', orderBy: 'id DESC');
   }
 
-  //
+  //Method takes in map data and sends it into the notes db
   static Future insertNoteToDB(Map<String, Object> data) async {
+    //create a instance of the db
     final database = await DatabaseHelper.database();
 
+    //insert the data into db and conflicAlg handles data 'id' that
+    //conflicts which will then update instead
     int inserted = await database.insert('notes', data,
         conflictAlgorithm: ConflictAlgorithm.replace);
     print(inserted);
+  }
+
+  //Method removes note from the db
+  static Future deleteNoteFromDB(int id) async {
+    //creates instance of the db
+    final database = await DatabaseHelper.database();
+
+    //delete data from the db using the id argument provided
+    return database.delete('notes', where: 'id = ?', whereArgs: [id]);
   }
 }
