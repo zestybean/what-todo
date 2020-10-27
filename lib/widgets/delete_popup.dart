@@ -2,7 +2,6 @@
 
 //Flutter
 import 'package:flutter/material.dart';
-import 'package:what_todo_app/screens/screens.dart';
 
 //Models
 import '../models/note.dart';

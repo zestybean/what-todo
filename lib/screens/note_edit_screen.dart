@@ -135,7 +135,7 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
                           borderRadius: BorderRadius.circular(20.0),
                           image: DecorationImage(
                             image: FileImage(_image),
-                            fit: BoxFit.fill,
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ),

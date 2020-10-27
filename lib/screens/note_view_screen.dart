@@ -96,7 +96,12 @@ class _NoteViewScreenState extends State<NoteViewScreen> {
             if (selectedNote.imagePath != null)
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: Image.file(File(selectedNote.imagePath)),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Image.file(
+                    File(selectedNote.imagePath),
+                  ),
+                ),
               ),
             Padding(
               padding: const EdgeInsets.all(16.0),

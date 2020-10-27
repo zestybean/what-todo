@@ -19,6 +19,7 @@ import '../screens/screens.dart';
 import 'package:what_todo_app/utils/constants.dart';
 
 class NoteListScreen extends StatelessWidget {
+  final _scaffoldKey = GlobalKey<ScaffoldState>();
   static const route = '/note-list';
 
   @override
@@ -39,12 +40,23 @@ class NoteListScreen extends StatelessWidget {
           //Check is state is complete else error out
           if (snapshot.connectionState == ConnectionState.done) {
             return Scaffold(
+              key: _scaffoldKey,
               appBar: AppBar(
                 brightness: Brightness.dark,
                 backgroundColor: headerColor,
                 elevation: 0.0,
+                leading: IconButton(
+                  icon: Icon(
+                    Icons.more_vert_sharp,
+                    size: 40.0,
+                  ),
+                  onPressed: () {
+                    _scaffoldKey.currentState.openDrawer();
+                  },
+                ),
                 title: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
                       'Quick',
@@ -92,6 +104,7 @@ class NoteListScreen extends StatelessWidget {
                   ),
                 ],
               ),
+              drawer: Drawer(),
               floatingActionButton: FloatingActionButton(
                 elevation: 0.0,
                 heroTag: 'noteListBtn',
