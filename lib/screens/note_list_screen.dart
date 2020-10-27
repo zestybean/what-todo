@@ -104,7 +104,7 @@ class NoteListScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              drawer: Drawer(),
+              drawer: drawer(),
               floatingActionButton: FloatingActionButton(
                 elevation: 0.0,
                 heroTag: 'noteListBtn',
@@ -122,6 +122,22 @@ class NoteListScreen extends StatelessWidget {
           );
         }
       },
+    );
+  }
+
+  Widget drawer() {
+    return Drawer(
+      child: ListView(
+        children: [
+          ListTile(
+            title: Text('About This App'),
+            leading: Icon(Icons.contact_page),
+          ),
+          ListTile(
+            title: Text('Settings'),
+          ),
+        ],
+      ),
     );
   }
 
