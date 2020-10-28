@@ -230,7 +230,7 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
     if (id != null) {
       Provider.of<NoteProvider>(this.context, listen: false)
           .addOrUpdateNote(id, title, content, imagePath, EditMode.UPDATE);
-      Navigator.of(this.context).pop();
+      Navigator.of(this.context).popUntil(ModalRoute.withName('/note-list'));
     } else {
       //Using time for the id of each note for unique-ness
       int id = DateTime.now().millisecondsSinceEpoch;
@@ -239,7 +239,7 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
       Provider.of<NoteProvider>(this.context, listen: false)
           .addOrUpdateNote(id, title, content, imagePath, EditMode.ADD);
       //Go to view notes
-      Navigator.of(this.context).pop();
+      Navigator.of(this.context).popUntil(ModalRoute.withName('/note-list'));
     }
   }
 

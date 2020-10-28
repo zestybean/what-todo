@@ -25,21 +25,33 @@ class MyApp extends StatelessWidget {
     //Use provider package to listen to note provider changes
     return ChangeNotifierProvider.value(
       value: NoteProvider(),
-      child: MaterialApp(
-        theme: ThemeData(
-          accentColor: headerColor,
-        ),
-
-        title: 'What_ToDo',
-        debugShowCheckedModeBanner: false,
-        initialRoute: '/',
-        //Application screen routes
-        routes: {
-          '/': (context) => SplashScreen(),
-          NoteListScreen.route: (context) => NoteListScreen(),
-          NoteViewScreen.route: (context) => NoteViewScreen(),
-          NoteEditScreen.route: (context) => NoteEditScreen(),
+      //Wrapping gesture detector allows the keyboard to be cancelled
+      child: GestureDetector(
+        onTap: () {
+          //Check focus of context
+          FocusScopeNode currentFocus = FocusScope.of(context);
+          //This somehow cancels the keyboard?
+          if (!currentFocus.hasPrimaryFocus &&
+              currentFocus.focusedChild != null) {
+            FocusManager.instance.primaryFocus.unfocus();
+          }
         },
+        child: MaterialApp(
+          theme: ThemeData(
+            accentColor: headerColor,
+          ),
+
+          title: 'What_ToDo',
+          debugShowCheckedModeBanner: false,
+          initialRoute: '/',
+          //Application screen routes
+          routes: {
+            '/': (context) => SplashScreen(),
+            NoteListScreen.route: (context) => NoteListScreen(),
+            NoteViewScreen.route: (context) => NoteViewScreen(),
+            NoteEditScreen.route: (context) => NoteEditScreen(),
+          },
+        ),
       ),
     );
   }

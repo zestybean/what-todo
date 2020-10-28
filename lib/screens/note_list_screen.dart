@@ -104,8 +104,11 @@ class NoteListScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              drawer: drawer(),
+              drawer: drawer(context),
               floatingActionButton: FloatingActionButton(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20.0),
+                ),
                 elevation: 0.0,
                 heroTag: 'noteListBtn',
                 onPressed: () {
@@ -125,18 +128,119 @@ class NoteListScreen extends StatelessWidget {
     );
   }
 
-  Widget drawer() {
-    return Drawer(
-      child: ListView(
-        children: [
-          ListTile(
-            title: Text('About This App'),
-            leading: Icon(Icons.contact_page),
-          ),
-          ListTile(
-            title: Text('Settings'),
-          ),
-        ],
+  //Drawer properties for list screen
+  Widget drawer(BuildContext context) {
+    return SizedBox(
+      //Half the screen size
+      width: MediaQuery.of(context).size.width * 0.5,
+      child: Drawer(
+        child: Column(
+          children: [
+            Container(
+              height: 200,
+              width: double.infinity,
+              color: headerColor,
+              child: Padding(
+                padding: const EdgeInsets.only(top: 50.0, bottom: 25.0),
+                child: Image.asset(
+                  'assets/images/splash_note.png',
+                  fit: BoxFit.scaleDown,
+                  width: 300,
+                  height: 300,
+                ),
+              ),
+            ),
+            Expanded(
+              child: ListView(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 20.0),
+                    child: Column(
+                      children: [
+                        ListTile(
+                          onTap: () {
+                            print('Go to screen');
+                          },
+                          title: Text(
+                            'About',
+                            style: dividerMenuTitle,
+                          ),
+                          trailing: Icon(Icons.contact_page,
+                              size: 35.0, color: headerColor),
+                        ),
+                        Divider(
+                          height: 2.0,
+                          thickness: 2.0,
+                          endIndent: 20.0,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 20.0),
+                    child: Column(
+                      children: [
+                        ListTile(
+                          title: Text(
+                            'Settings',
+                            style: dividerMenuTitle,
+                          ),
+                          trailing: Icon(Icons.settings,
+                              size: 35.0, color: headerColor),
+                        ),
+                        Divider(
+                          height: 2.0,
+                          thickness: 2.0,
+                          endIndent: 20.0,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 20.0),
+                    child: Column(
+                      children: [
+                        ListTile(
+                          title: Text(
+                            'Support',
+                            style: dividerMenuTitle,
+                          ),
+                          trailing:
+                              Icon(Icons.email, size: 35.0, color: headerColor),
+                        ),
+                        Divider(
+                          height: 2.0,
+                          thickness: 2.0,
+                          endIndent: 20.0,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 20.0),
+                    child: Column(
+                      children: [
+                        ListTile(
+                          title: Text(
+                            'Share',
+                            style: dividerMenuTitle,
+                          ),
+                          trailing: Icon(Icons.ios_share,
+                              size: 35.0, color: headerColor),
+                        ),
+                        Divider(
+                          height: 2.0,
+                          thickness: 2.0,
+                          endIndent: 20.0,
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
