@@ -114,6 +114,10 @@ class _NoteViewScreenState extends State<NoteViewScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        elevation: 0.0,
         heroTag: 'noteViewBtn',
         onPressed: () {
           Navigator.pushNamed(context, NoteEditScreen.route,

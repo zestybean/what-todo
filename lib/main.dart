@@ -50,6 +50,8 @@ class MyApp extends StatelessWidget {
             NoteListScreen.route: (context) => NoteListScreen(),
             NoteViewScreen.route: (context) => NoteViewScreen(),
             NoteEditScreen.route: (context) => NoteEditScreen(),
+            AboutScreen.route: (context) => AboutScreen(),
+            SettingsScreen.route: (context) => SettingsScreen(),
           },
         ),
       ),

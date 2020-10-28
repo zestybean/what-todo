@@ -171,7 +171,7 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
             Padding(
               padding: const EdgeInsets.only(
                 left: 10.0,
-                right: 5.0,
+                right: 10.0,
                 top: 10.0,
                 bottom: 5.0,
               ),
@@ -187,6 +187,10 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        elevation: 0.0,
         heroTag: 'noteEditBtn',
         onPressed: () {
           if (titleController.text.isEmpty)

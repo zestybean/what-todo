@@ -15,8 +15,11 @@ import '../helper/helpers.dart';
 //Screens
 import '../screens/screens.dart';
 
-//Constant
-import 'package:what_todo_app/utils/constants.dart';
+//Widgets
+import '../widgets/widgets.dart';
+
+//Constants
+import '../utils/constants.dart';
 
 class NoteListScreen extends StatelessWidget {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
@@ -153,88 +156,29 @@ class NoteListScreen extends StatelessWidget {
             Expanded(
               child: ListView(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 20.0),
-                    child: Column(
-                      children: [
-                        ListTile(
-                          onTap: () {
-                            print('Go to screen');
-                          },
-                          title: Text(
-                            'About',
-                            style: dividerMenuTitle,
-                          ),
-                          trailing: Icon(Icons.contact_page,
-                              size: 35.0, color: headerColor),
-                        ),
-                        Divider(
-                          height: 2.0,
-                          thickness: 2.0,
-                          endIndent: 20.0,
-                        ),
-                      ],
-                    ),
+                  DrawerListItem(
+                    onTap: () {
+                      Navigator.of(context).pushNamed(SettingsScreen.route);
+                    },
+                    title: 'Settings',
+                    icon: Icons.settings,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 20.0),
-                    child: Column(
-                      children: [
-                        ListTile(
-                          title: Text(
-                            'Settings',
-                            style: dividerMenuTitle,
-                          ),
-                          trailing: Icon(Icons.settings,
-                              size: 35.0, color: headerColor),
-                        ),
-                        Divider(
-                          height: 2.0,
-                          thickness: 2.0,
-                          endIndent: 20.0,
-                        ),
-                      ],
-                    ),
+                  DrawerListItem(
+                    onTap: () {
+                      Navigator.of(context).pushNamed(AboutScreen.route);
+                    },
+                    title: 'About',
+                    icon: Icons.person,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 20.0),
-                    child: Column(
-                      children: [
-                        ListTile(
-                          title: Text(
-                            'Support',
-                            style: dividerMenuTitle,
-                          ),
-                          trailing:
-                              Icon(Icons.email, size: 35.0, color: headerColor),
-                        ),
-                        Divider(
-                          height: 2.0,
-                          thickness: 2.0,
-                          endIndent: 20.0,
-                        ),
-                      ],
-                    ),
+                  DrawerListItem(
+                    onTap: () {},
+                    title: 'Support',
+                    icon: Icons.mail,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(bottom: 20.0),
-                    child: Column(
-                      children: [
-                        ListTile(
-                          title: Text(
-                            'Share',
-                            style: dividerMenuTitle,
-                          ),
-                          trailing: Icon(Icons.ios_share,
-                              size: 35.0, color: headerColor),
-                        ),
-                        Divider(
-                          height: 2.0,
-                          thickness: 2.0,
-                          endIndent: 20.0,
-                        ),
-                      ],
-                    ),
+                  DrawerListItem(
+                    onTap: () {},
+                    title: 'Share',
+                    icon: Icons.ios_share,
                   ),
                 ],
               ),
