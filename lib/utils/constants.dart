@@ -50,6 +50,22 @@ var boldPlus = GoogleFonts.economica(
   ),
 );
 
+var boldWhitePlus = GoogleFonts.economica(
+  textStyle: TextStyle(
+    fontSize: 30.0,
+    color: Colors.white,
+    fontWeight: FontWeight.bold,
+  ),
+);
+
+var boldWhiteMinus = GoogleFonts.economica(
+  textStyle: TextStyle(
+    fontSize: 25.0,
+    color: Colors.white,
+    fontWeight: FontWeight.w300,
+  ),
+);
+
 var dividerMenuTitle = GoogleFonts.economica(
   textStyle: TextStyle(
     fontSize: 30.0,
@@ -90,6 +106,7 @@ var viewContentStyle = GoogleFonts.economica(
     fontSize: 20.0,
     height: 1.5,
     fontWeight: FontWeight.w400);
+
 var createTitle = GoogleFonts.economica(
   textStyle: TextStyle(
     fontSize: 28.0,
