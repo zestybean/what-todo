@@ -14,8 +14,8 @@ import 'package:path/path.dart';
 import 'package:provider/provider.dart';
 import 'package:path_provider/path_provider.dart';
 
-//Constants
-import '../utils/constants.dart';
+//Utils
+import '../utils/utils.dart';
 
 //Modals
 import '../models/note.dart';

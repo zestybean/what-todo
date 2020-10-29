@@ -9,8 +9,8 @@ import 'database_helper.dart';
 //Models
 import '../models/note.dart';
 
-//Constants
-import '../utils/constants.dart';
+//Utils
+import '../utils/utils.dart';
 
 class NoteProvider with ChangeNotifier {
   List _items = [];

@@ -11,8 +11,8 @@ import 'helper/helpers.dart';
 //Packages
 import 'package:provider/provider.dart';
 
-//Constants
-import 'package:what_todo_app/utils/constants.dart';
+//Utils
+import 'utils/utils.dart';
 
 void main() {
   runApp(MyApp());

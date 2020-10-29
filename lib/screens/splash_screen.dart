@@ -1,10 +1,12 @@
 //Flutter
 import 'package:flutter/material.dart';
-import 'package:what_todo_app/utils/constants.dart';
 import 'dart:async';
 
 //Screens
 import 'screens.dart';
+
+//Utils
+import '../utils/utils.dart';
 
 class SplashScreen extends StatefulWidget {
   @override

@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 //Constants
-import '../utils/constants.dart';
+import '../utils/utils.dart';
 
 class DrawerListItem extends StatelessWidget {
   final Function onTap;

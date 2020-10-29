@@ -18,8 +18,8 @@ import '../screens/screens.dart';
 //Widgets
 import '../widgets/widgets.dart';
 
-//Constants
-import '../utils/constants.dart';
+//Utils
+import '../utils/utils.dart';
 
 class NoteListScreen extends StatelessWidget {
   final _scaffoldKey = GlobalKey<ScaffoldState>();
