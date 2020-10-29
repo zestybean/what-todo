@@ -57,6 +57,7 @@ class NoteListScreen extends StatelessWidget {
                     _scaffoldKey.currentState.openDrawer();
                   },
                 ),
+                centerTitle: true,
                 title: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   mainAxisSize: MainAxisSize.min,
