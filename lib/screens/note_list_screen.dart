@@ -146,7 +146,7 @@ class NoteListScreen extends StatelessWidget {
               child: Padding(
                 padding: const EdgeInsets.only(top: 50.0, bottom: 25.0),
                 child: Image.asset(
-                  'assets/images/splash_note.png',
+                  'assets/images/note_logo.png',
                   fit: BoxFit.scaleDown,
                   width: 300,
                   height: 300,

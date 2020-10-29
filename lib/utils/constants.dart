@@ -66,6 +66,14 @@ var boldWhiteMinus = GoogleFonts.economica(
   ),
 );
 
+var versionBoldMinus = GoogleFonts.economica(
+  textStyle: TextStyle(
+    fontSize: 15.0,
+    color: Colors.white,
+    fontWeight: FontWeight.w200,
+  ),
+);
+
 var dividerMenuTitle = GoogleFonts.economica(
   textStyle: TextStyle(
     fontSize: 30.0,
