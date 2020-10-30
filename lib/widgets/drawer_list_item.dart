@@ -23,7 +23,11 @@ class DrawerListItem extends StatelessWidget {
               title,
               style: dividerMenuTitle,
             ),
-            trailing: Icon(icon, size: 35.0, color: headerColor),
+            trailing: Icon(
+              icon,
+              size: 35.0,
+              color: Theme.of(context).appBarTheme.color,
+            ),
           ),
           Divider(
             height: 2.0,

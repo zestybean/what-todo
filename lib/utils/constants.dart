@@ -16,14 +16,14 @@ const white = Colors.white;
 
 var headerRideStyle = GoogleFonts.economica(
   textStyle: TextStyle(
-    color: white,
+    //color: white,
     fontSize: 30.0,
   ),
 );
 
 var headerNoteStyle = GoogleFonts.economica(
   textStyle: TextStyle(
-    color: white,
+    //color: white,
     fontSize: 45.0,
     fontWeight: FontWeight.bold,
   ),
@@ -37,7 +37,7 @@ enum EditMode {
 var noNotesStyle = GoogleFonts.economica(
   textStyle: TextStyle(
     fontSize: 22.0,
-    color: black2,
+    //color: black2,
     fontWeight: FontWeight.w600,
   ),
 );
@@ -45,7 +45,7 @@ var noNotesStyle = GoogleFonts.economica(
 var boldPlus = GoogleFonts.economica(
   textStyle: TextStyle(
     fontSize: 30.0,
-    color: Colors.blueAccent,
+    //color: Colors.blueAccent,
     fontWeight: FontWeight.bold,
   ),
 );
@@ -53,7 +53,7 @@ var boldPlus = GoogleFonts.economica(
 var boldWhitePlus = GoogleFonts.economica(
   textStyle: TextStyle(
     fontSize: 30.0,
-    color: Colors.white,
+    //color: Colors.white,
     fontWeight: FontWeight.bold,
   ),
 );
@@ -61,7 +61,7 @@ var boldWhitePlus = GoogleFonts.economica(
 var boldWhiteMinus = GoogleFonts.economica(
   textStyle: TextStyle(
     fontSize: 25.0,
-    color: Colors.white,
+    //color: Colors.white,
     fontWeight: FontWeight.w300,
   ),
 );
@@ -69,7 +69,7 @@ var boldWhiteMinus = GoogleFonts.economica(
 var versionBoldMinus = GoogleFonts.economica(
   textStyle: TextStyle(
     fontSize: 15.0,
-    color: Colors.white,
+    //color: Colors.white,
     fontWeight: FontWeight.w200,
   ),
 );
@@ -77,7 +77,7 @@ var versionBoldMinus = GoogleFonts.economica(
 var dividerMenuTitle = GoogleFonts.economica(
   textStyle: TextStyle(
     fontSize: 30.0,
-    color: black2,
+    //color: black2,
     fontWeight: FontWeight.bold,
   ),
 );
@@ -85,7 +85,7 @@ var dividerMenuTitle = GoogleFonts.economica(
 var itemTitle = GoogleFonts.economica(
   textStyle: TextStyle(
     fontSize: 18.0,
-    color: black,
+    //color: black,
     fontWeight: FontWeight.bold,
   ),
 );
@@ -93,14 +93,14 @@ var itemTitle = GoogleFonts.economica(
 var itemDateStyle = GoogleFonts.economica(
   textStyle: TextStyle(
     fontSize: 11.0,
-    color: grey2,
+    //color: grey2,
   ),
 );
 
 var itemContentStyle = GoogleFonts.economica(
   textStyle: TextStyle(
     fontSize: 15.0,
-    color: grey2,
+    //color: grey2,
   ),
 );
 
@@ -137,3 +137,50 @@ var shadow = [
     offset: Offset(0, 10),
   ),
 ];
+
+//Define the themes here!
+//TODO: DARK THEME neeeds work
+final darkTheme = ThemeData(
+  brightness: Brightness.light,
+  floatingActionButtonTheme:
+      FloatingActionButtonThemeData(backgroundColor: Colors.green),
+  appBarTheme: AppBarTheme(
+    color: Colors.green,
+  ),
+);
+
+final lightTheme = ThemeData(
+  brightness: Brightness.light,
+  floatingActionButtonTheme:
+      FloatingActionButtonThemeData(backgroundColor: headerColor),
+  appBarTheme: AppBarTheme(
+    color: headerColor,
+  ),
+);
+
+final lightTheme2 = ThemeData(
+  brightness: Brightness.light,
+  floatingActionButtonTheme:
+      FloatingActionButtonThemeData(backgroundColor: Colors.grey),
+  appBarTheme: AppBarTheme(
+    color: Colors.grey,
+  ),
+);
+
+final lightTheme3 = ThemeData(
+  brightness: Brightness.light,
+  floatingActionButtonTheme:
+      FloatingActionButtonThemeData(backgroundColor: Colors.amber),
+  appBarTheme: AppBarTheme(
+    color: Colors.amber,
+  ),
+);
+
+final lightTheme4 = ThemeData(
+  brightness: Brightness.light,
+  floatingActionButtonTheme:
+      FloatingActionButtonThemeData(backgroundColor: Colors.blue),
+  appBarTheme: AppBarTheme(
+    color: Colors.blue,
+  ),
+);

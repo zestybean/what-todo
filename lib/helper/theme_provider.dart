@@ -5,23 +5,6 @@ import 'package:flutter/material.dart';
 import '../utils/utils.dart';
 
 class ThemeProvider with ChangeNotifier {
-  //Define the themes here!
-  final darkTheme = ThemeData(
-    primaryColor: Colors.black,
-    brightness: Brightness.dark,
-    dividerColor: Colors.white,
-    accentColor: Colors.white,
-    primarySwatch: Colors.grey,
-    textTheme: TextTheme(
-      bodyText1: TextStyle(color: white),
-      bodyText2: TextStyle(color: white),
-    ),
-  );
-
-  final lightTheme = ThemeData(
-    brightness: Brightness.light,
-  );
-
   ThemeData _themeData;
 
   ThemeData getTheme() => _themeData;
@@ -30,13 +13,15 @@ class ThemeProvider with ChangeNotifier {
   ThemeProvider() {
     StorageManager.readData('themeMode').then(
       (value) {
-        print('value read from storage: ' + value.toString());
         var themeMode = value ?? 'light';
         if (themeMode == 'light') {
           _themeData = lightTheme;
+        } else if (themeMode == 'light2') {
+          _themeData = lightTheme2;
+        } else if (themeMode == 'light3') {
+          _themeData = lightTheme2;
         } else {
-          print('setting dark theme');
-          _themeData = darkTheme;
+          _themeData = lightTheme4;
         }
         //Rebuild UI
         notifyListeners();
@@ -50,9 +35,29 @@ class ThemeProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  void setLightMode() async {
-    _themeData = lightTheme;
-    StorageManager.saveData('themeMode', 'light');
+  void setLightMode(int selection) async {
+    switch (selection) {
+      case 1:
+        _themeData = lightTheme;
+        StorageManager.saveData('themeMode', 'light');
+        break;
+      case 2:
+        print('here2');
+        _themeData = lightTheme2;
+        StorageManager.saveData('themeMode', 'light2');
+        break;
+      case 3:
+        print('here3');
+        _themeData = lightTheme3;
+        StorageManager.saveData('themeMode', 'light3');
+        break;
+      case 4:
+        print('here4');
+        _themeData = lightTheme4;
+        StorageManager.saveData('themeMode', 'light4');
+        break;
+    }
+
     notifyListeners();
   }
 }

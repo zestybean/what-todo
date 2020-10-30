@@ -46,7 +46,7 @@ class NoteListScreen extends StatelessWidget {
               key: _scaffoldKey,
               appBar: AppBar(
                 brightness: Brightness.dark,
-                backgroundColor: headerColor,
+                //backgroundColor: headerColor,
                 elevation: 0.0,
                 leading: IconButton(
                   icon: Icon(
@@ -75,7 +75,7 @@ class NoteListScreen extends StatelessWidget {
               ),
               body: Column(
                 children: [
-                  header(),
+                  header(context),
                   //Part of provider listener?
                   Consumer<NoteProvider>(
                     child: noNotesUI(context),
@@ -143,7 +143,7 @@ class NoteListScreen extends StatelessWidget {
             Container(
               height: 200,
               width: double.infinity,
-              color: headerColor,
+              color: Theme.of(context).appBarTheme.color,
               child: Padding(
                 padding: const EdgeInsets.only(top: 50.0, bottom: 25.0),
                 child: Image.asset(
@@ -191,13 +191,13 @@ class NoteListScreen extends StatelessWidget {
   }
 
   //Main header for the screen
-  Widget header() {
+  Widget header(BuildContext context) {
     //Header will launch a url which will navigate to a webpage
     return GestureDetector(
       onTap: _launchUrl,
       child: Container(
         decoration: BoxDecoration(
-          color: headerColor,
+          color: Theme.of(context).appBarTheme.color,
           borderRadius: BorderRadius.only(
             bottomRight: Radius.circular(75.0),
           ),

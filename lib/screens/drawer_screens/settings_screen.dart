@@ -21,12 +21,22 @@ class SettingsScreen extends StatelessWidget {
           children: [
             RaisedButton(
               onPressed: () {
-                theme.setLightMode();
+                theme.setLightMode(1);
               },
             ),
             RaisedButton(
               onPressed: () {
-                theme.setDarkMode();
+                theme.setLightMode(2);
+              },
+            ),
+            RaisedButton(
+              onPressed: () {
+                theme.setLightMode(3);
+              },
+            ),
+            RaisedButton(
+              onPressed: () {
+                theme.setLightMode(4);
               },
             ),
           ],
