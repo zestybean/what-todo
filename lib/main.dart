@@ -11,9 +11,6 @@ import 'helper/helpers.dart';
 //Packages
 import 'package:provider/provider.dart';
 
-//Utils
-import 'utils/utils.dart';
-
 void main() {
   runApp(MyApp());
 }
@@ -23,8 +20,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //Use provider package to listen to note provider changes
-    return ChangeNotifierProvider.value(
-      value: NoteProvider(),
+    return MultiProvider(
+      providers: [
+        ListenableProvider<NoteProvider>(
+          create: (_) => NoteProvider(),
+        ),
+        ChangeNotifierProvider<ThemeProvider>(
+          create: (_) => ThemeProvider(),
+        ),
+      ],
+
       //Wrapping gesture detector allows the keyboard to be cancelled
       child: GestureDetector(
         onTap: () {
@@ -36,23 +41,23 @@ class MyApp extends StatelessWidget {
             FocusManager.instance.primaryFocus.unfocus();
           }
         },
-        child: MaterialApp(
-          theme: ThemeData(
-            accentColor: headerColor,
-          ),
+        child: Consumer<ThemeProvider>(
+          builder: (context, theme, _) => MaterialApp(
+            theme: theme.getTheme(),
 
-          title: 'What_ToDo',
-          debugShowCheckedModeBanner: false,
-          initialRoute: '/',
-          //Application screen routes
-          routes: {
-            '/': (context) => SplashScreen(),
-            NoteListScreen.route: (context) => NoteListScreen(),
-            NoteViewScreen.route: (context) => NoteViewScreen(),
-            NoteEditScreen.route: (context) => NoteEditScreen(),
-            AboutScreen.route: (context) => AboutScreen(),
-            SettingsScreen.route: (context) => SettingsScreen(),
-          },
+            title: 'What_ToDo',
+            debugShowCheckedModeBanner: false,
+            initialRoute: '/',
+            //Application screen routes
+            routes: {
+              '/': (context) => SplashScreen(),
+              NoteListScreen.route: (context) => NoteListScreen(),
+              NoteViewScreen.route: (context) => NoteViewScreen(),
+              NoteEditScreen.route: (context) => NoteEditScreen(),
+              AboutScreen.route: (context) => AboutScreen(),
+              SettingsScreen.route: (context) => SettingsScreen(),
+            },
+          ),
         ),
       ),
     );

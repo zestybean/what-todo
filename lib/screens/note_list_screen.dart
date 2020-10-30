@@ -149,8 +149,8 @@ class NoteListScreen extends StatelessWidget {
                 child: Image.asset(
                   'assets/images/note_logo.png',
                   fit: BoxFit.scaleDown,
-                  width: 300,
-                  height: 300,
+                  width: 100,
+                  height: 100,
                 ),
               ),
             ),
