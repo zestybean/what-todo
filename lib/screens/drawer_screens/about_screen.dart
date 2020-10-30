@@ -14,10 +14,9 @@ class AboutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: headerColor,
+      backgroundColor: Theme.of(context).appBarTheme.color,
       appBar: AppBar(
         elevation: 0.0,
-        backgroundColor: headerColor,
         title: Text(
           'About',
           style: headerNoteStyle,
@@ -36,11 +35,11 @@ class AboutScreen extends StatelessWidget {
                 children: [
                   Text(
                     'Quick',
-                    style: headerRideStyle,
+                    style: boldWhiteMinus,
                   ),
                   Text(
                     'Notes',
-                    style: headerNoteStyle,
+                    style: boldWhitePlus,
                   ),
                 ],
               ),

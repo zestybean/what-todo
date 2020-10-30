@@ -12,6 +12,14 @@ const grey2 = Color(0xFF6D6D6D);
 const black = Color(0xFF1C1C1C);
 const black2 = Color(0xFF424242);
 const headerColor = Color(0xFFFD5872);
+
+const backgroundColor = Color(0xFFf4f1de);
+
+const headerColor1 = Color(0xFFe07a5f);
+const headerColor2 = Color(0xFF3d405b);
+const headerColor3 = Color(0xFF81b29a);
+const headerColor4 = Color(0xFFe9c46a);
+
 const white = Colors.white;
 
 var headerRideStyle = GoogleFonts.economica(
@@ -53,7 +61,7 @@ var boldPlus = GoogleFonts.economica(
 var boldWhitePlus = GoogleFonts.economica(
   textStyle: TextStyle(
     fontSize: 30.0,
-    //color: Colors.white,
+    color: Colors.white,
     fontWeight: FontWeight.bold,
   ),
 );
@@ -61,7 +69,7 @@ var boldWhitePlus = GoogleFonts.economica(
 var boldWhiteMinus = GoogleFonts.economica(
   textStyle: TextStyle(
     fontSize: 25.0,
-    //color: Colors.white,
+    color: Colors.white,
     fontWeight: FontWeight.w300,
   ),
 );
@@ -69,7 +77,7 @@ var boldWhiteMinus = GoogleFonts.economica(
 var versionBoldMinus = GoogleFonts.economica(
   textStyle: TextStyle(
     fontSize: 15.0,
-    //color: Colors.white,
+    color: Colors.white,
     fontWeight: FontWeight.w200,
   ),
 );
@@ -77,7 +85,6 @@ var versionBoldMinus = GoogleFonts.economica(
 var dividerMenuTitle = GoogleFonts.economica(
   textStyle: TextStyle(
     fontSize: 30.0,
-    //color: black2,
     fontWeight: FontWeight.bold,
   ),
 );
@@ -150,37 +157,54 @@ final darkTheme = ThemeData(
 );
 
 final lightTheme = ThemeData(
+  textTheme: TextTheme(
+    bodyText1: TextStyle(color: black2),
+    bodyText2: TextStyle(color: black2),
+  ),
+  highlightColor: Colors.green,
   brightness: Brightness.light,
   floatingActionButtonTheme:
-      FloatingActionButtonThemeData(backgroundColor: headerColor),
+      FloatingActionButtonThemeData(backgroundColor: headerColor1),
   appBarTheme: AppBarTheme(
-    color: headerColor,
+    color: headerColor1,
   ),
 );
 
 final lightTheme2 = ThemeData(
+  textTheme: TextTheme(
+    bodyText1: TextStyle(color: black2),
+    bodyText2: TextStyle(color: black2),
+  ),
   brightness: Brightness.light,
   floatingActionButtonTheme:
-      FloatingActionButtonThemeData(backgroundColor: Colors.grey),
+      FloatingActionButtonThemeData(backgroundColor: headerColor2),
   appBarTheme: AppBarTheme(
-    color: Colors.grey,
+    color: headerColor2,
   ),
 );
 
 final lightTheme3 = ThemeData(
+  textTheme: TextTheme(
+    bodyText1: TextStyle(color: black2),
+    bodyText2: TextStyle(color: black2),
+  ),
   brightness: Brightness.light,
   floatingActionButtonTheme:
-      FloatingActionButtonThemeData(backgroundColor: Colors.amber),
+      FloatingActionButtonThemeData(backgroundColor: headerColor3),
   appBarTheme: AppBarTheme(
-    color: Colors.amber,
+    color: headerColor3,
   ),
 );
 
 final lightTheme4 = ThemeData(
+  textTheme: TextTheme(
+    bodyText1: TextStyle(color: black2),
+    bodyText2: TextStyle(color: black2),
+  ),
   brightness: Brightness.light,
   floatingActionButtonTheme:
-      FloatingActionButtonThemeData(backgroundColor: Colors.blue),
+      FloatingActionButtonThemeData(backgroundColor: headerColor4),
   appBarTheme: AppBarTheme(
-    color: Colors.blue,
+    color: headerColor4,
   ),
 );

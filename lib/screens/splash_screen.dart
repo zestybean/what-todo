@@ -51,7 +51,7 @@ class _SplashScreenState extends State<SplashScreen> {
     //The splash screen properties
     return Scaffold(
       body: Container(
-        color: headerColor,
+        color: Theme.of(context).appBarTheme.color,
         child: Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,

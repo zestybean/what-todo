@@ -19,7 +19,7 @@ class ThemeProvider with ChangeNotifier {
         } else if (themeMode == 'light2') {
           _themeData = lightTheme2;
         } else if (themeMode == 'light3') {
-          _themeData = lightTheme2;
+          _themeData = lightTheme3;
         } else {
           _themeData = lightTheme4;
         }
