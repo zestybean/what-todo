@@ -53,7 +53,7 @@ var noNotesStyle = GoogleFonts.economica(
 var boldPlus = GoogleFonts.economica(
   textStyle: TextStyle(
     fontSize: 30.0,
-    //color: Colors.blueAccent,
+    color: black2,
     fontWeight: FontWeight.bold,
   ),
 );

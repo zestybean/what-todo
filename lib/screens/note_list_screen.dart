@@ -81,7 +81,7 @@ class NoteListScreen extends StatelessWidget {
                     child: noNotesUI(context),
                     //Builder checks to see if there are any notes from the provider
                     //if there are none it will display the child above with the context
-                    //of no noNotesUI else it will display a different UI.
+                    //of no noNotesUI else it will display Note listview UI.
                     builder: (context, noteprovider, child) =>
                         noteprovider.items.length <= 0
                             ? child
@@ -94,12 +94,46 @@ class NoteListScreen extends StatelessWidget {
                                     } else {
                                       final i = index - 1;
                                       final item = noteprovider.items[i];
-                                      return ListItem(
-                                        id: item.id,
-                                        title: item.title,
-                                        content: item.content,
-                                        imagePath: item.imagePath,
-                                        date: item.date,
+                                      //Swipe to remove note
+                                      return Dismissible(
+                                        background: Container(
+                                          padding: EdgeInsets.only(right: 30.0),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: [
+                                              Icon(
+                                                Icons.delete,
+                                                color: Theme.of(context)
+                                                    .appBarTheme
+                                                    .color,
+                                                size: 30.0,
+                                              ),
+                                            ],
+                                          ),
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(15.0),
+                                          ),
+                                        ),
+                                        //Direction of swipe-able widget
+                                        direction: DismissDirection.endToStart,
+                                        //When swipped call provider to update the ui and remove from db
+                                        onDismissed: (direction) {
+                                          Provider.of<NoteProvider>(context,
+                                                  listen: false)
+                                              .deleteNote(item.id);
+
+                                          print(noteprovider.items.length);
+                                        },
+                                        key: Key(item.title),
+                                        child: ListItem(
+                                          id: item.id,
+                                          title: item.title,
+                                          content: item.content,
+                                          imagePath: item.imagePath,
+                                          date: item.date,
+                                        ),
                                       );
                                     }
                                   },
@@ -228,7 +262,7 @@ class NoteListScreen extends StatelessWidget {
           Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 50.0, bottom: 25.0),
+                padding: const EdgeInsets.only(top: 50.0, bottom: 5.0),
                 child: Image.asset(
                   'assets/images/sad_note.png',
                   fit: BoxFit.cover,
@@ -240,7 +274,9 @@ class NoteListScreen extends StatelessWidget {
                 text: TextSpan(
                   style: noNotesStyle,
                   children: [
-                    TextSpan(text: 'There is no note available\nTap on"'),
+                    TextSpan(
+                        text: 'Oops! There are no notes available\nTap on"',
+                        style: boldPlus),
                     //Make this tappable to the user to add a note
                     TextSpan(
                       text: '+',
@@ -250,7 +286,7 @@ class NoteListScreen extends StatelessWidget {
                           goToNoteEditScreen(context);
                         },
                     ),
-                    TextSpan(text: '"to add new note'),
+                    TextSpan(text: '"to add new note', style: boldPlus),
                   ],
                 ),
               )

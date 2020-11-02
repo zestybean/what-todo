@@ -20,8 +20,8 @@ class SettingsScreen extends StatelessWidget {
         appBar: AppBar(
           elevation: 0.0,
           title: Text(
-            'Settings Screen',
-            style: boldPlus,
+            'Settings',
+            style: headerNoteStyle,
           ),
         ),
         body: Column(
@@ -41,7 +41,7 @@ class SettingsScreen extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
               child: Text(
-                'Theme',
+                'App Theme:',
                 style: boldPlus,
               ),
             ),
