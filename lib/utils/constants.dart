@@ -50,6 +50,14 @@ var noNotesStyle = GoogleFonts.economica(
   ),
 );
 
+var boldMinus = GoogleFonts.economica(
+  textStyle: TextStyle(
+    fontSize: 24.0,
+    color: black2,
+    fontWeight: FontWeight.bold,
+  ),
+);
+
 var boldPlus = GoogleFonts.economica(
   textStyle: TextStyle(
     fontSize: 30.0,
@@ -111,6 +119,13 @@ var itemContentStyle = GoogleFonts.economica(
   ),
 );
 
+var colorNameStyle = GoogleFonts.economica(
+  textStyle: TextStyle(
+    fontSize: 15.0,
+    //color: grey2,
+  ),
+);
+
 var viewTitleStyle = GoogleFonts.economica(
   fontWeight: FontWeight.w900,
   fontSize: 28.0,
@@ -161,6 +176,7 @@ final lightTheme = ThemeData(
     bodyText1: TextStyle(color: black2),
     bodyText2: TextStyle(color: black2),
   ),
+  iconTheme: IconThemeData(color: white),
   highlightColor: Colors.green,
   brightness: Brightness.light,
   floatingActionButtonTheme:
@@ -175,6 +191,7 @@ final lightTheme2 = ThemeData(
     bodyText1: TextStyle(color: black2),
     bodyText2: TextStyle(color: black2),
   ),
+  iconTheme: IconThemeData(color: white),
   brightness: Brightness.light,
   floatingActionButtonTheme:
       FloatingActionButtonThemeData(backgroundColor: headerColor2),
@@ -188,6 +205,7 @@ final lightTheme3 = ThemeData(
     bodyText1: TextStyle(color: black2),
     bodyText2: TextStyle(color: black2),
   ),
+  iconTheme: IconThemeData(color: white),
   brightness: Brightness.light,
   floatingActionButtonTheme:
       FloatingActionButtonThemeData(backgroundColor: headerColor3),
@@ -201,6 +219,7 @@ final lightTheme4 = ThemeData(
     bodyText1: TextStyle(color: black2),
     bodyText2: TextStyle(color: black2),
   ),
+  iconTheme: IconThemeData(color: white),
   brightness: Brightness.light,
   floatingActionButtonTheme:
       FloatingActionButtonThemeData(backgroundColor: headerColor4),

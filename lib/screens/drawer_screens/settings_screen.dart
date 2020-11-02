@@ -24,59 +24,77 @@ class SettingsScreen extends StatelessWidget {
             style: headerNoteStyle,
           ),
         ),
-        body: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                color: Theme.of(context).appBarTheme.color,
-                borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(75.0),
+        body: SingleChildScrollView(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  color: Theme.of(context).appBarTheme.color,
+                  borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(75.0),
+                  ),
+                ),
+                height: 35,
+                width: double.infinity,
+                child: null,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 20.0, vertical: 20.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Text(
+                      'Color Theme:',
+                      style: boldPlus,
+                    ),
+                  ],
                 ),
               ),
-              height: 35,
-              width: double.infinity,
-              child: null,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 20.0, bottom: 20.0),
-              child: Text(
-                'App Theme:',
-                style: boldPlus,
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    _themeButton(1, theme, headerColor1, 'Terra\n Cota'),
+                    _themeButton(2, theme, headerColor2, 'Navy\n Blue'),
+                    _themeButton(3, theme, headerColor3, 'Green\n Sheen'),
+                    _themeButton(4, theme, headerColor4, 'Deep\n Champagne'),
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  _themeButton(1, theme, headerColor1),
-                  _themeButton(2, theme, headerColor2),
-                  _themeButton(3, theme, headerColor3),
-                  _themeButton(4, theme, headerColor4),
-                ],
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Widget _themeButton(int selection, ThemeProvider theme, Color color) {
-    return ClipOval(
-      child: Material(
-        color: color,
-        child: InkWell(
-          child: SizedBox(
-            height: 50.0,
-            width: 50.0,
+  Widget _themeButton(
+      int selection, ThemeProvider theme, Color color, String colorName) {
+    return Column(
+      children: [
+        ClipOval(
+          child: Material(
+            color: color,
+            child: InkWell(
+              child: SizedBox(
+                height: 50.0,
+                width: 50.0,
+              ),
+              onTap: () {
+                theme.setLightMode(selection);
+              },
+            ),
           ),
-          onTap: () {
-            theme.setLightMode(selection);
-          },
         ),
-      ),
+        Text(
+          colorName,
+          textAlign: TextAlign.center,
+          style: colorNameStyle,
+        ),
+      ],
     );
   }
 }

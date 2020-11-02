@@ -276,17 +276,17 @@ class NoteListScreen extends StatelessWidget {
                   children: [
                     TextSpan(
                         text: 'Oops! There are no notes available\nTap on"',
-                        style: boldPlus),
+                        style: boldMinus),
                     //Make this tappable to the user to add a note
                     TextSpan(
                       text: '+',
-                      style: boldPlus,
+                      style: boldMinus,
                       recognizer: TapGestureRecognizer()
                         ..onTap = () {
                           goToNoteEditScreen(context);
                         },
                     ),
-                    TextSpan(text: '"to add new note', style: boldPlus),
+                    TextSpan(text: '"to add new note', style: boldMinus),
                   ],
                 ),
               )
