@@ -92,7 +92,7 @@ class SettingsScreen extends StatelessWidget {
         Text(
           colorName,
           textAlign: TextAlign.center,
-          style: colorNameStyle,
+          style: settingsThemeNameStyle,
         ),
       ],
     );

@@ -44,8 +44,7 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
     if (firstTime) {
       id = ModalRoute.of(this.context).settings.arguments;
 
-      print(id);
-
+      //If note exists return the note values from the db
       if (id != null) {
         selectedNote =
             Provider.of<NoteProvider>(this.context, listen: false).getNote(id);
@@ -159,6 +158,7 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
                               child: Icon(
                                 Icons.delete,
                                 size: 16.0,
+                                color: black2,
                               ),
                             ),
                           ),

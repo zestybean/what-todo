@@ -42,17 +42,14 @@ class ThemeProvider with ChangeNotifier {
         StorageManager.saveData('themeMode', 'light');
         break;
       case 2:
-        print('here2');
         _themeData = lightTheme2;
         StorageManager.saveData('themeMode', 'light2');
         break;
       case 3:
-        print('here3');
         _themeData = lightTheme3;
         StorageManager.saveData('themeMode', 'light3');
         break;
       case 4:
-        print('here4');
         _themeData = lightTheme4;
         StorageManager.saveData('themeMode', 'light4');
         break;

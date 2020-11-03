@@ -11,7 +11,6 @@ const grey = Color(0xFFEAEAEA);
 const grey2 = Color(0xFF6D6D6D);
 const black = Color(0xFF1C1C1C);
 const black2 = Color(0xFF424242);
-const headerColor = Color(0xFFFD5872);
 
 const backgroundColor = Color(0xFFf4f1de);
 
@@ -119,13 +118,6 @@ var itemContentStyle = GoogleFonts.economica(
   ),
 );
 
-var colorNameStyle = GoogleFonts.economica(
-  textStyle: TextStyle(
-    fontSize: 15.0,
-    //color: grey2,
-  ),
-);
-
 var viewTitleStyle = GoogleFonts.economica(
   fontWeight: FontWeight.w900,
   fontSize: 28.0,
@@ -152,6 +144,21 @@ var createContent = GoogleFonts.economica(
     fontWeight: FontWeight.w400,
   ),
 );
+
+var editDateStyle = GoogleFonts.economica(
+  textStyle: TextStyle(
+    fontSize: 16.0,
+    //color: grey2,
+  ),
+);
+
+var settingsThemeNameStyle = GoogleFonts.economica(
+  textStyle: TextStyle(
+    fontSize: 14.0,
+    //color: grey2,
+  ),
+);
+
 var shadow = [
   BoxShadow(
     color: Colors.grey[300],
@@ -177,7 +184,6 @@ final lightTheme = ThemeData(
     bodyText2: TextStyle(color: black2),
   ),
   iconTheme: IconThemeData(color: white),
-  highlightColor: Colors.green,
   brightness: Brightness.light,
   floatingActionButtonTheme:
       FloatingActionButtonThemeData(backgroundColor: headerColor1),

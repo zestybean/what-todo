@@ -68,7 +68,7 @@ class ListItem extends StatelessWidget {
                       Expanded(
                         child: Text(
                           content,
-                          maxLines: 2,
+                          maxLines: 4,
                           overflow: TextOverflow.ellipsis,
                           style: itemContentStyle,
                         ),

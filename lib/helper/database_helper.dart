@@ -39,7 +39,6 @@ class DatabaseHelper {
     //conflicts which will then update instead
     int inserted = await database.insert('notes', data,
         conflictAlgorithm: ConflictAlgorithm.replace);
-    print(inserted);
   }
 
   //Method removes note from the db

@@ -8,6 +8,8 @@
 	<string>QuickNotes needs access to your camera.</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>QuickNotes needs access to your microphone.</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>QuickNotes needs to translate what your say via your voice.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>

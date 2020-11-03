@@ -54,7 +54,7 @@ class _NoteViewScreenState extends State<NoteViewScreen> {
         leading: IconButton(
           icon: Icon(
             Icons.arrow_back,
-            color: Colors.black,
+            color: black2,
           ),
           onPressed: () {
             Navigator.pop(context);
@@ -64,7 +64,7 @@ class _NoteViewScreenState extends State<NoteViewScreen> {
           IconButton(
             icon: Icon(
               Icons.delete,
-              color: Colors.black,
+              color: black2,
             ),
             onPressed: () => _showDialog(),
           ),
@@ -84,13 +84,18 @@ class _NoteViewScreenState extends State<NoteViewScreen> {
             Row(
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(8.0),
+                  padding:
+                      const EdgeInsets.only(left: 8.0, right: 2.0, bottom: 2.0),
                   child: Icon(
                     Icons.access_time,
                     size: 18.0,
+                    color: black2,
                   ),
                 ),
-                Text('${selectedNote?.date}'),
+                Text(
+                  '${selectedNote?.date}',
+                  style: editDateStyle,
+                ),
               ],
             ),
             if (selectedNote.imagePath != null)
