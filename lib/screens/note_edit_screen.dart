@@ -2,6 +2,7 @@
 
 //Flutter
 import 'package:flutter/material.dart';
+
 import 'package:what_todo_app/widgets/delete_popup.dart';
 import 'dart:io';
 
@@ -13,6 +14,8 @@ import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart';
 import 'package:provider/provider.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:avatar_glow/avatar_glow.dart';
+import 'package:speech_to_text/speech_to_text.dart' as stt;
 
 //Utils
 import '../utils/utils.dart';
@@ -33,9 +36,19 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
   File _image, localFile;
   final picker = ImagePicker();
 
+  //Speech to text
+  stt.SpeechToText _speech;
+  bool _isListening = false;
+
   bool firstTime = true;
   Note selectedNote;
   int id;
+
+  @override
+  void initState() {
+    super.initState();
+    _speech = stt.SpeechToText();
+  }
 
   @override
   void didChangeDependencies() {
@@ -168,6 +181,28 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
                   ),
                 ),
               ),
+            Divider(
+              indent: 8.0,
+              endIndent: 8.0,
+              thickness: 1.0,
+              color: black2,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Note Toolbar: ',
+                    style: itemTitle,
+                  ),
+                  SpeechToTextButton(
+                    isListening: _isListening,
+                    listenFunction: _listen,
+                  ),
+                ],
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.only(
                 left: 10.0,
@@ -247,12 +282,71 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
     }
   }
 
+  //Show delete pop up function
   void _showDialog() {
     showDialog(
       context: this.context,
       builder: (context) {
         return DeletePopUp(selectedNote: selectedNote);
       },
+    );
+  }
+
+  //Speech to text handle
+  void _listen() async {
+    if (!_isListening) {
+      bool available = await _speech.initialize(
+        onStatus: (val) => print('onStatus: $val'),
+        onError: (val) => print('onError: $val'),
+      );
+      if (available) {
+        setState(() => _isListening = true);
+        _speech.listen(
+            onResult: (val) => setState(() {
+                  contentController.text = val.recognizedWords;
+                }));
+      }
+    } else {
+      setState(() => _isListening = false);
+
+      _speech.stop();
+    }
+  }
+}
+
+//Speech to text button
+class SpeechToTextButton extends StatelessWidget {
+  final Function listenFunction;
+  final bool isListening;
+
+  SpeechToTextButton(
+      {@required this.isListening, @required this.listenFunction});
+
+  @override
+  Widget build(BuildContext context) {
+    return AvatarGlow(
+      animate: isListening,
+      glowColor: Theme.of(context).appBarTheme.color,
+      repeat: true,
+      endRadius: 50.0,
+      duration: const Duration(milliseconds: 2000),
+      repeatPauseDuration: const Duration(milliseconds: 100),
+      child: GestureDetector(
+        onTap: listenFunction,
+        child: Container(
+          decoration: BoxDecoration(
+            color: Theme.of(context).appBarTheme.color,
+            borderRadius: BorderRadius.circular(15.0),
+          ),
+          height: 50,
+          width: 50,
+          child: Icon(
+            isListening ? Icons.mic : Icons.mic_none,
+            color: white,
+            size: 35.0,
+          ),
+        ),
+      ),
     );
   }
 }

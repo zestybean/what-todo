@@ -123,8 +123,6 @@ class NoteListScreen extends StatelessWidget {
                                           Provider.of<NoteProvider>(context,
                                                   listen: false)
                                               .deleteNote(item.id);
-
-                                          print(noteprovider.items.length);
                                         },
                                         key: Key(item.title),
                                         child: ListItem(
