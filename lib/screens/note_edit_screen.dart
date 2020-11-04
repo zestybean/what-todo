@@ -77,6 +77,7 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
   void dispose() {
     titleController.dispose();
     contentController.dispose();
+
     super.dispose();
   }
 
@@ -294,6 +295,8 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
 
   //Speech to text handle
   void _listen() async {
+    contentController.clear();
+
     if (!_isListening) {
       bool available = await _speech.initialize(
         onStatus: (val) => print('onStatus: $val'),
@@ -302,13 +305,15 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
       if (available) {
         setState(() => _isListening = true);
         _speech.listen(
-            onResult: (val) => setState(() {
-                  contentController.text = val.recognizedWords;
-                }));
+          onResult: (val) => setState(
+            () {
+              contentController.text = val.recognizedWords;
+            },
+          ),
+        );
       }
     } else {
       setState(() => _isListening = false);
-
       _speech.stop();
     }
   }
