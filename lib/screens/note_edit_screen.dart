@@ -295,8 +295,6 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
 
   //Speech to text handle
   void _listen() async {
-    contentController.clear();
-
     if (!_isListening) {
       bool available = await _speech.initialize(
         onStatus: (val) => print('onStatus: $val'),
@@ -307,6 +305,7 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
         _speech.listen(
           onResult: (val) => setState(
             () {
+              contentController.clear();
               contentController.text = val.recognizedWords;
             },
           ),
@@ -334,7 +333,7 @@ class SpeechToTextButton extends StatelessWidget {
       glowColor: Theme.of(context).appBarTheme.color,
       repeat: true,
       endRadius: 50.0,
-      duration: const Duration(milliseconds: 2000),
+      duration: const Duration(milliseconds: 1000),
       repeatPauseDuration: const Duration(milliseconds: 100),
       child: GestureDetector(
         onTap: listenFunction,

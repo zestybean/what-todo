@@ -21,6 +21,25 @@ const headerColor4 = Color(0xFFe9c46a);
 
 const white = Colors.white;
 
+enum EditMode {
+  ADD,
+  UPDATE,
+}
+
+var popUpTitleStyle = GoogleFonts.economica(
+  textStyle: TextStyle(
+    //color: white,
+    fontSize: 30.0,
+    fontWeight: FontWeight.bold,
+  ),
+);
+
+var popUpContentStyle = GoogleFonts.economica(
+    letterSpacing: 1.0,
+    fontSize: 20.0,
+    height: 1.5,
+    fontWeight: FontWeight.w400);
+
 var headerRideStyle = GoogleFonts.economica(
   textStyle: TextStyle(
     //color: white,
@@ -35,11 +54,6 @@ var headerNoteStyle = GoogleFonts.economica(
     fontWeight: FontWeight.bold,
   ),
 );
-
-enum EditMode {
-  ADD,
-  UPDATE,
-}
 
 var noNotesStyle = GoogleFonts.economica(
   textStyle: TextStyle(
