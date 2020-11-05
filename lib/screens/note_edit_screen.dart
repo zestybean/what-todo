@@ -201,6 +201,25 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
                     isListening: _isListening,
                     listenFunction: _listen,
                   ),
+                  GestureDetector(
+                    onTap: () {
+                      contentController.clear();
+                      contentController.text = '•';
+                    },
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).appBarTheme.color,
+                        borderRadius: BorderRadius.circular(15.0),
+                      ),
+                      height: 50,
+                      width: 50,
+                      child: Icon(
+                        Icons.list,
+                        color: white,
+                        size: 35.0,
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
