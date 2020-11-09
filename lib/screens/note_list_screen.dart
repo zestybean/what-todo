@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:what_todo_app/widgets/list_item.dart';
+import 'package:share/share.dart';
 
 //Helpers
 import '../helper/helpers.dart';
@@ -204,12 +205,16 @@ class NoteListScreen extends StatelessWidget {
                     icon: Icons.person,
                   ),
                   DrawerListItem(
-                    onTap: () {},
+                    onTap: () {
+                      _lauchEmail();
+                    },
                     title: 'Support',
                     icon: Icons.mail,
                   ),
                   DrawerListItem(
-                    onTap: () {},
+                    onTap: () {
+                      Share.share('check out my website https://example.com');
+                    },
                     title: 'Share',
                     icon: Icons.ios_share,
                   ),
@@ -248,6 +253,16 @@ class NoteListScreen extends StatelessWidget {
       await launch(url);
     } else {
       throw 'Could not launch $url';
+    }
+  }
+
+  _lauchEmail() async {
+    final url =
+        Uri.encodeFull('mailto:beandip@gmail.com?subject=News&body=New plugin');
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not email $url';
     }
   }
 

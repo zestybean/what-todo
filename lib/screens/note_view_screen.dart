@@ -13,6 +13,7 @@ import '../models/note.dart';
 
 //Packages
 import 'package:provider/provider.dart';
+import 'package:share/share.dart';
 
 //Constants
 import '../utils/constants.dart';
@@ -61,6 +62,24 @@ class _NoteViewScreenState extends State<NoteViewScreen> {
           },
         ),
         actions: [
+          IconButton(
+            icon: Icon(
+              Icons.ios_share,
+              color: black2,
+            ),
+            onPressed: () async {
+              String imagePath = selectedNote.imagePath ?? ' ';
+              String title = selectedNote.title ?? ' ';
+              String content = selectedNote.content ?? ' ';
+
+              if (imagePath.isNotEmpty) {
+                await Share.shareFiles([imagePath],
+                    text: content, subject: title);
+              } else {
+                await Share.share(content, subject: title);
+              }
+            },
+          ),
           IconButton(
             icon: Icon(
               Icons.delete,
