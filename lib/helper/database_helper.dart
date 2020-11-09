@@ -37,7 +37,7 @@ class DatabaseHelper {
 
     //insert the data into db and conflicAlg handles data 'id' that
     //conflicts which will then update instead
-    int inserted = await database.insert('notes', data,
+    database.insert('notes', data,
         conflictAlgorithm: ConflictAlgorithm.replace);
   }
 

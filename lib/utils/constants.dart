@@ -197,6 +197,7 @@ final lightTheme = ThemeData(
     bodyText1: TextStyle(color: black2),
     bodyText2: TextStyle(color: black2),
   ),
+  fontFamily: GoogleFonts.economica().fontFamily,
   iconTheme: IconThemeData(color: white),
   brightness: Brightness.light,
   floatingActionButtonTheme:
@@ -211,6 +212,7 @@ final lightTheme2 = ThemeData(
     bodyText1: TextStyle(color: black2),
     bodyText2: TextStyle(color: black2),
   ),
+  fontFamily: GoogleFonts.economica().fontFamily,
   iconTheme: IconThemeData(color: white),
   brightness: Brightness.light,
   floatingActionButtonTheme:
@@ -225,6 +227,7 @@ final lightTheme3 = ThemeData(
     bodyText1: TextStyle(color: black2),
     bodyText2: TextStyle(color: black2),
   ),
+  fontFamily: GoogleFonts.economica().fontFamily,
   iconTheme: IconThemeData(color: white),
   brightness: Brightness.light,
   floatingActionButtonTheme:
@@ -239,6 +242,7 @@ final lightTheme4 = ThemeData(
     bodyText1: TextStyle(color: black2),
     bodyText2: TextStyle(color: black2),
   ),
+  fontFamily: GoogleFonts.economica().fontFamily,
   iconTheme: IconThemeData(color: white),
   brightness: Brightness.light,
   floatingActionButtonTheme:

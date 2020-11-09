@@ -189,9 +189,10 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
               color: black2,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              padding: const EdgeInsets.only(left: 8.0),
               child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
                     'Note Toolbar: ',
@@ -200,6 +201,28 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
                   SpeechToTextButton(
                     isListening: _isListening,
                     listenFunction: _listen,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 25.0),
+                    child: GestureDetector(
+                      onTap: () {
+                        contentController.clear();
+                        contentController.text = '•';
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).appBarTheme.color,
+                          borderRadius: BorderRadius.circular(15.0),
+                        ),
+                        height: 50,
+                        width: 50,
+                        child: Icon(
+                          Icons.format_list_bulleted,
+                          color: white,
+                          size: 35.0,
+                        ),
+                      ),
+                    ),
                   ),
                   GestureDetector(
                     onTap: () {
@@ -214,7 +237,7 @@ class _NoteEditScreenState extends State<NoteEditScreen> {
                       height: 50,
                       width: 50,
                       child: Icon(
-                        Icons.list,
+                        Icons.format_list_numbered,
                         color: white,
                         size: 35.0,
                       ),

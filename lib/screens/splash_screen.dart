@@ -5,9 +5,6 @@ import 'dart:async';
 //Screens
 import 'screens.dart';
 
-//Utils
-import '../utils/utils.dart';
-
 class SplashScreen extends StatefulWidget {
   @override
   _SplashScreenState createState() => _SplashScreenState();
