@@ -14,6 +14,7 @@ import '../models/note.dart';
 //Packages
 import 'package:provider/provider.dart';
 import 'package:share/share.dart';
+import 'package:highlight_text/highlight_text.dart';
 
 //Constants
 import '../utils/constants.dart';
@@ -129,9 +130,10 @@ class _NoteViewScreenState extends State<NoteViewScreen> {
               ),
             Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Text(
-                selectedNote.content,
-                style: viewContentStyle,
+              child: TextHighlight(
+                text: selectedNote.content,
+                words: highlightText,
+                textStyle: viewContentStyle,
               ),
             ),
           ],

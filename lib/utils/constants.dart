@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 
 //Packages
 import 'package:google_fonts/google_fonts.dart';
+import 'package:highlight_text/highlight_text.dart';
 
 //Init color palette
 const grey = Color(0xFFEAEAEA);
@@ -25,6 +26,17 @@ enum EditMode {
   ADD,
   UPDATE,
 }
+
+//Map for the view screens highlighted words
+final Map<String, HighlightedWord> highlightText = {
+  'awesome': HighlightedWord(
+    onTap: () => print('flutter'),
+    textStyle: const TextStyle(
+      color: Colors.blue,
+      fontWeight: FontWeight.bold,
+    ),
+  ),
+};
 
 var popUpTitleStyle = GoogleFonts.economica(
   textStyle: TextStyle(
@@ -141,6 +153,7 @@ var viewContentStyle = GoogleFonts.economica(
     letterSpacing: 1.0,
     fontSize: 20.0,
     height: 1.5,
+    color: black2,
     fontWeight: FontWeight.w400);
 
 var createTitle = GoogleFonts.economica(
