@@ -125,7 +125,7 @@ class NoteListScreen extends StatelessWidget {
                                                   listen: false)
                                               .deleteNote(item.id);
                                         },
-                                        key: Key(item.title),
+                                        key: UniqueKey(),
                                         child: ListItem(
                                           id: item.id,
                                           title: item.title,
